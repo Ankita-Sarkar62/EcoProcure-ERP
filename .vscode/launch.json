@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-EcoprocureApplication<ecoprocure>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.ecoprocure.EcoprocureApplication",
+            "projectName": "ecoprocure",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
