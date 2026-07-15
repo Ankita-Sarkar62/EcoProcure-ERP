@@ -7,6 +7,7 @@ import com.ecoprocure.entity.Employee;
 
 
 //JpaRepository<Employee, Integer>: tells that which table we should work with -> Employee..........Integer: datatype of the primary key
+//we don't need to write sql manually
 public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
     
 }
