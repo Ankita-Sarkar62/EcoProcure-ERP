@@ -34,23 +34,36 @@ public class Vendor {
     @Column(name="reliability_rating")
     private Double reliabilityRating;
 
-    @Column(name="delivery_days")
-    private Integer deliveryDays;
+    @Column(name = "product_name")
+    private String productName;
+
+    @Column(name = "price")
+    private Double price;
+
+    @Column(name = "delivery_time")
+    private Integer deliveryTime;
+
+    @Column(name = "carbon_emission")
+    private Double carbonEmission;
 
     public Vendor(){
 
     }
 
-    public Vendor(Integer vendorid,String vendorName,String email, String phoneNumber,String companyName, Double sustainabilityRating,  Double reliabilityRating, Integer deliveryDays ){
-        this.vendorid=vendorid;
-        this.vendorName=vendorName;
-        this.email=email;
-        this.phoneNumber=phoneNumber;
-        this.companyName=companyName;
-        this.sustainabilityRating=sustainabilityRating;
-        this.reliabilityRating=reliabilityRating;
-        this.deliveryDays=deliveryDays;
-    }
+    public Vendor(Integer vendorid,String vendorName,String email,String phoneNumber,String companyName,String productName,Double price,Integer deliveryTime,Double sustainabilityRating,Double reliabilityRating,Double carbonEmission) {
+
+    this.vendorid = vendorid;
+    this.vendorName = vendorName;
+    this.email = email;
+    this.phoneNumber = phoneNumber;
+    this.companyName = companyName;
+    this.productName = productName;
+    this.price = price;
+    this.deliveryTime = deliveryTime;
+    this.sustainabilityRating = sustainabilityRating;
+    this.reliabilityRating = reliabilityRating;
+    this.carbonEmission = carbonEmission;
+}
 
     public Integer getVendorid() {
         return vendorid;
@@ -108,20 +121,44 @@ public class Vendor {
         this.reliabilityRating = reliabilityRating;
     }
 
-    public Integer getDeliveryDays() {
-        return deliveryDays;
+    public String getProductName() {
+        return productName;
     }
 
-    public void setDeliveryDays(Integer deliveryDays) {
-        this.deliveryDays = deliveryDays;
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+
+    public Integer getDeliveryTime() {
+        return deliveryTime;
+    }
+
+    public void setDeliveryTime(Integer deliveryTime) {
+        this.deliveryTime = deliveryTime;
+    }
+
+    public Double getCarbonEmission() {
+        return carbonEmission;
+    }
+
+    public void setCarbonEmission(Double carbonEmission) {
+        this.carbonEmission = carbonEmission;
     }
 
     @Override
     public String toString() {
         return "Vendor [vendorid=" + vendorid + ", vendorName=" + vendorName + ", email=" + email + ", phoneNumber="
                 + phoneNumber + ", companyName=" + companyName + ", sustainabilityRating=" + sustainabilityRating
-                + ", reliabilityRating=" + reliabilityRating + ", deliveryDays=" + deliveryDays + "]";
+                + ", reliabilityRating=" + reliabilityRating + ", productName=" + productName + ", price=" + price
+                + ", deliveryTime=" + deliveryTime + ", carbonEmission=" + carbonEmission + "]";
     }
-    
 
-}
+} 
