@@ -7,5 +7,5 @@ import com.ecoprocure.entity.PurchaseRequest;
 
 @Repository
 public interface PurchaseRequestRepository extends JpaRepository<PurchaseRequest, Integer>{
-    
+    long countByStatus(String status);//counts requests whose status is pending
 }
