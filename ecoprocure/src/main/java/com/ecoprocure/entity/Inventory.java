@@ -8,6 +8,9 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 
 
 @Entity
@@ -17,8 +20,11 @@ public class Inventory {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "inventory_id")
     private Integer inventoryId;
+    @NotBlank(message = "Product Name is required")
     @Column(name = "product_name")
     private String productName;
+    @NotNull(message = "Quantity is required")
+    @Positive(message = "Quantity must be greater than 0")
     @Column(name = "quantity")
     private Integer quantity;
     @Column(name = "minimum_stock")

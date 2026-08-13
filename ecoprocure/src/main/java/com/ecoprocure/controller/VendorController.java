@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ecoprocure.entity.Vendor;
 import com.ecoprocure.service.VendorService;
 
+import jakarta.validation.Valid;
+
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,7 +30,7 @@ public class VendorController {
         return vs.getAllVendors();
     }
     @PostMapping("/vendors")
-    public Vendor saveVendors(@RequestBody Vendor vnr) {
+    public Vendor saveVendors(@Valid @RequestBody Vendor vnr) {
         return vs.saveVendors(vnr);
     }
 
@@ -47,7 +49,7 @@ public class VendorController {
 
 
     @PutMapping("/vendors/{id}")
-    public Vendor updateVendor(@PathVariable Integer id, @RequestBody Vendor vnr){
+    public Vendor updateVendor(@PathVariable Integer id, @Valid @RequestBody Vendor vnr){
         return vs.updateVendor(id, vnr);
     }
     

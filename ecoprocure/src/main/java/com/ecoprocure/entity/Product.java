@@ -6,6 +6,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 @Table(name="product")
@@ -16,6 +17,7 @@ public class Product {
     private Integer productId;
 
     @Column(name = "product_name")
+    @NotBlank(message = "Product name is required")
     private String productName;
 
     @Column(name = "category")

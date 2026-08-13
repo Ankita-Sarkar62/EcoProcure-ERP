@@ -6,6 +6,11 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Positive;
 
 @Entity
 @Table(name="vendor")
@@ -17,15 +22,21 @@ public class Vendor {
     private Integer vendorid;
 
     @Column(name="vendor_name")
+    @NotBlank(message = "Vendor name is required")
     private String vendorName;
 
     @Column(name="email")
+    @Email(message = "Enter a valid email")
+    @NotBlank(message = "Email is required")
     private String email;
 
     @Column(name="phone_number")
+    @NotBlank(message = "Phone number is required")
+    @Pattern(regexp = "^[0-9]{10}$", message = "Phone number must contain exactly 10 digits")
     private String phoneNumber;
 
     @Column(name="company_name")
+    @NotBlank(message = "Company name is required")
     private String companyName;
 
     @Column(name="sustainability_rating")
@@ -35,9 +46,12 @@ public class Vendor {
     private Double reliabilityRating;
 
     @Column(name = "product_name")
+    @NotBlank(message = "Product name is required")
     private String productName;
 
     @Column(name = "price")
+    @NotNull(message = "Price is required")
+    @Positive(message = "Price must be greater than 0")
     private Double price;
 
     @Column(name = "delivery_time")

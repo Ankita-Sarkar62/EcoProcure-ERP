@@ -28,6 +28,8 @@ public class DashboardController {
     public long totalProducts() {
         return ds.totalProducts();
     }
+
+    
     @GetMapping("/requests")
     public long totalPurchaseRequests() {
         return ds.totalPurchaseRequests();

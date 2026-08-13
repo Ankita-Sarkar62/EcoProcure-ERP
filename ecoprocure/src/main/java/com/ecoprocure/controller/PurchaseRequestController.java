@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ecoprocure.entity.PurchaseRequest;
 import com.ecoprocure.service.PurchaseRequestService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/purchase-request")
 public class PurchaseRequestController {
@@ -26,7 +28,7 @@ public class PurchaseRequestController {
         return prs.getAllRequest();
     }
     @PostMapping
-    public PurchaseRequest savRequest(@RequestBody PurchaseRequest request){
+    public PurchaseRequest savRequest(@Valid @RequestBody PurchaseRequest request){
         return prs.saveRequest(request);
     }
     @GetMapping("/{id}")
@@ -34,7 +36,7 @@ public class PurchaseRequestController {
         return prs.getRequestById(id);
     }
     @PutMapping("/{id}")
-    public PurchaseRequest PurchaseRequest(@PathVariable Integer id, @RequestBody PurchaseRequest request){
+    public PurchaseRequest PurchaseRequest(@PathVariable Integer id, @Valid @RequestBody PurchaseRequest request){
         return prs.updateRequest(id,request);
     }
     @DeleteMapping("/{id}")
@@ -53,5 +55,10 @@ public class PurchaseRequestController {
     @PutMapping("/assignVendor/{requestId}")
     public PurchaseRequest assignVendor(@PathVariable Integer requestId){
         return prs.assignBestVendor(requestId);
+    }
+    @PutMapping("/{id}/delivered")
+    public PurchaseRequest markAsDelivered(@PathVariable Integer id){
+        return prs.markAsDelivered(id);
+    
     }
 }

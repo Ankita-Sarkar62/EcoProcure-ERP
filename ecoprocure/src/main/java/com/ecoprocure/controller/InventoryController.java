@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ecoprocure.service.InventoryService;
+
+import jakarta.validation.Valid;
+
 import com.ecoprocure.entity.Inventory;
 @RestController
 public class InventoryController {
@@ -23,7 +26,7 @@ public class InventoryController {
         return is.getAllInventory();
     }
     @PostMapping("/inventory")
-    public Inventory saveInventory(@RequestBody Inventory inv){
+    public Inventory saveInventory(@Valid @RequestBody Inventory inv){
         return is.saveInventory(inv);
     }
     @GetMapping("/inventory/{id}")
@@ -36,7 +39,7 @@ public class InventoryController {
         return "inventory Deleted Successfully!!!";
     }
     @PutMapping("/inventory/{id}")
-    public Inventory updateInventory(@PathVariable Integer id, @RequestBody Inventory inv){
+    public Inventory updateInventory(@PathVariable Integer id, @Valid @RequestBody Inventory inv){
         return is.updateInventory(id, inv);
     }
     @GetMapping("/inventory/{id}/status")

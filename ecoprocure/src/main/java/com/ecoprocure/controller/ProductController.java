@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ecoprocure.entity.Product;
 import com.ecoprocure.service.ProductService;
 
+import jakarta.validation.Valid;
+
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -37,12 +39,12 @@ public class ProductController {
     }
 
     @PostMapping//add new product
-    public Product saveProduct(@RequestBody Product prod){
+    public Product saveProduct(@Valid @RequestBody Product prod){
         return ps.saveProduct(prod);
     }
 
     @PutMapping("/{id}")//update
-    public Product updaProduct(@PathVariable Integer id, @RequestBody Product prod){
+    public Product updaProduct(@PathVariable Integer id, @Valid @RequestBody Product prod){
         return ps.updateProduct(id, prod);
     }
 

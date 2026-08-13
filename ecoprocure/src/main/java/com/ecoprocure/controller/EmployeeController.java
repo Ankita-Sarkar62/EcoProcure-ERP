@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import com.ecoprocure.entity.Employee;
 import com.ecoprocure.service.EmployeeService;
+
+import jakarta.validation.Valid;
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -27,7 +30,7 @@ public class EmployeeController {
 
 
     @PostMapping("/employees")//handles POST request(insert new employee)
-    public Employee saveEmployee(@RequestBody Employee emp) {//@RequestBody: converts the incoming JSON into Employee obj
+    public Employee saveEmployee(@Valid @RequestBody Employee emp) {//@RequestBody: converts the incoming JSON into Employee obj
        
         return es.saveEmployee(emp);
     }
@@ -47,8 +50,20 @@ public class EmployeeController {
 
 
     @PutMapping("/employees/{id}")
-    public Employee updateEmployee(@PathVariable Integer id, @RequestBody Employee emp){
+    public Employee updateEmployee(@PathVariable Integer id,@Valid @RequestBody Employee emp){
         return es.updateEmployee(id, emp);
     }
+
+
+
+    /*
+    @NotBlank: Checks whether the field is empty
+    @Email: checks  the email format
+    @size: checks length
+
+    @Valid: Tells spring to perform those checks
+    GlobalExceptionHandler: Handles the failure and creats response
+    */
+    
     
 }

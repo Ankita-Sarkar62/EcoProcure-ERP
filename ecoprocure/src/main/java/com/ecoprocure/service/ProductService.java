@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ecoprocure.entity.Product;
+import com.ecoprocure.exception.ResourceNotFoundException;
 import com.ecoprocure.repository.ProductRepository;
 
 @Service
@@ -20,7 +21,7 @@ public class ProductService {
     }
 
     public Product getProductById(Integer id) {
-        return prodRepo.findById(id).orElse(null);
+        return prodRepo.findById(id).orElseThrow(() ->new ResourceNotFoundException("Product not found with ID: " + id));
     }
 
     public Product saveProduct(Product product) {
@@ -28,11 +29,13 @@ public class ProductService {
     }
 
     public Product updateProduct(Integer id, Product product) {
+        prodRepo.findById(id).orElseThrow(() ->new ResourceNotFoundException("Product not found with ID: " + id));
         product.setProductId(id);
         return prodRepo.save(product);
     }
 
     public void deleteProduct(Integer id) {
-        prodRepo.deleteById(id);
+        Product prod = prodRepo.findById(id).orElseThrow(() ->new ResourceNotFoundException("Product not found with ID: " + id));
+        prodRepo.delete(prod);
     }
 }

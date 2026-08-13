@@ -9,6 +9,9 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 
 @Entity
 @Table(name="purchase_request")
@@ -18,13 +21,18 @@ public class PurchaseRequest {
     @Column(name= "request_id")
     private Integer requestId;
 
+    @NotNull(message = "Employee is required")
     @ManyToOne
     @JoinColumn(name="employee_id")
     private Employee employee;
+    @NotNull(message = "Product ID is required")
     @Column(name = "product_id")
     private Integer productId;
+    @NotNull(message = "Quantity is required")
+    @Positive(message = "Quantity must be greater than 0")
     @Column(name = "quantity")
     private Integer quantity;
+    @NotBlank(message = "Reason is required")
     @Column(name = "reason")
     private String reason;
     @Column(name = "status")

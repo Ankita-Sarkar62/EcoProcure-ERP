@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 
 import com.ecoprocure.entity.Vendor;
+import com.ecoprocure.exception.ResourceNotFoundException;
 import com.ecoprocure.repository.VendorRepository;
 
 @Service
@@ -23,14 +24,16 @@ public class VendorService {
     }
 
     public Vendor getVendorByid(Integer id){
-        return vr.findById(id).orElse(null);
+        return vr.findById(id).orElseThrow(() ->new ResourceNotFoundException("Vendor not found with ID: " + id));
     }
 
     public void deleteVendor(Integer id){
-        vr.deleteById(id);
+        Vendor ven= vr.findById(id).orElseThrow(() ->new ResourceNotFoundException("Vendor not found with ID: " + id));
+        vr.delete(ven);
     }
 
     public Vendor updateVendor(Integer id, Vendor vnr){
+        vr.findById(id).orElseThrow(() ->new ResourceNotFoundException("Vendor not found with ID: " + id));
         vnr.setVendorid(id);
         return vr.save(vnr);
     }
