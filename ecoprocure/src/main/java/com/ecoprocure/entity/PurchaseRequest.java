@@ -21,7 +21,6 @@ public class PurchaseRequest {
     @Column(name= "request_id")
     private Integer requestId;
 
-    @NotNull(message = "Employee is required")
     @ManyToOne
     @JoinColumn(name="employee_id")
     private Employee employee;
