@@ -1,5 +1,11 @@
 # EcoProcure - Enterprise Procurement Management System
 
+## Demo Video
+
+A short demonstration of the working EcoProcure ERP system, including employee purchase requests, manager approval, vendor assignment, dashboards, inventory, and role-based access.
+
+[Watch the EcoProcure Demo](https://youtu.be/nOVEArQBWL4)
+
 ## Overview
 
 EcoProcure is an enterprise procurement management system developed to manage the process of employee purchase requests, managerial approval, vendor selection, inventory management, and procurement tracking.
