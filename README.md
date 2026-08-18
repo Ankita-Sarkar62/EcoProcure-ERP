@@ -60,3 +60,10 @@ EcoProcure-ERP/
 │   └── ecoprocure_schema.sql
 │
 └── README.md
+
+## Demo Video
+
+A short demonstration of the working EcoProcure ERP system, including employee purchase requests, manager approval, vendor assignment, dashboards, inventory, and role-based access.
+
+[▶ Watch the EcoProcure ERP Demo](https://youtu.be/nOVEArQBWL4)
+
